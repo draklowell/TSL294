@@ -1,0 +1,10 @@
+__pycache__
+/tsl294.egg-info
+/test*.py
+/.vscode
+/build
+/dist
+/client.py
+/server.py
+/main.py
+/target.pem
