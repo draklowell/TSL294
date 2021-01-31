@@ -36,13 +36,14 @@ To avoid protocol conflicts, we recommend to use `protocol sign`, it is some byt
 #### Packet format
 ```
 18 BYTES - DCN Header
-844 BYTES - TSL294 Header:
+850 BYTES - TSL294 Header:
+    6 BYTES - Id of protocol ( `TSL294` )
     294 BYTES - Source key ( Can be only RSA key )
     294 BYTES - Destination key ( Can be RSA key or zero bytes - broadcast to all clients)
     256 BYTES - Signature of encrypted content 
-64676 BYTES - Encrypted ( if destination is RSA key ) content
+64670 BYTES - Encrypted ( if destination is RSA key ) content
 ```
-Max size of content in packet - `64676` ( `pow(2, 16) - 16 - 844` ).
+Max size of content in packet - `64670` ( `pow(2, 16) - 16 - 850` ).
 
 #### Create client
 There are three arguments - `key`, `friendly_hosts` and `limit_queue`
