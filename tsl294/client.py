@@ -1,7 +1,7 @@
 from func_timeout import func_timeout
 from func_timeout.exceptions import FunctionTimedOut
 from .packet import Packet
-from .crypto.key import Key
+from .crypto.key import Key, NoPrivateKeyError
 
 import typing
 import dcn
@@ -17,6 +17,8 @@ class Client:
             key = Key.random(2048)
         if key.getSize() != 2048:
             raise InvalidKeySize("Key size is not 2048")
+        if not key.isPrivate():
+            raise NoPrivateKeyError("Not private part in key")
         self.key = key
         self.limit_queue = limit_queue
         self.queue = []
